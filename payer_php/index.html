@@ -1,0 +1,148 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <header>
+        <!-- <a href="php/logout.php"> <button id="" class="btnHome">logout</button> -->
+        </a>
+        <h3 style="color: rgb(78, 27, 84); ">chercher un capture d'ecran client </h3>
+
+        <input type="number" placeholder="numero telephone" id="telephone" name="telephone" class="search" />
+
+        <button id="submit" class="btnHome" onclick="search();">chercher</button>
+
+    </header>
+
+    <main id="main"></main>
+    <h1 hidden id="recommendations-header" style="text-align: center">
+        Recommendations based on search results
+    </h1>
+    <div id="recommendations"></div>
+
+
+    <!-- Custom Script -->
+    <!-- <script src="./script.js"></script> -->
+
+    <script src="jquery.min.js">
+
+    </script>
+    <script>
+
+
+
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "php/select.php",
+            async: false,
+            // cache: true,
+
+            success: function (data) {
+                recommendations.innerHTML = "";
+              
+                $.each(data, function (index, item) {
+                    const movieEl = document.createElement("div");
+                    console.log(item.pay_id + " " + item.clnt_id)
+                    movieEl.classList.add("movie");
+                    if (item.payer == '❌') {
+                        movieEl.innerHTML = `
+                        <img src="uploads/${item.img}" alt="">
+                        <div class="movie-info">
+                                <h3>${item.nom}</h3>
+                                <h3>telephone => ${item.telephone}</h3>
+                            </div>
+                            <div class="overview">
+                              <h3> date reservation => ${item.date + " " + item.depart} </h3>
+                                direction => ${item.direction} <br>
+                                payer? => ${item.payer} 
+
+                              <a  href='php/valide_payer.php?id=${item.clnt_id}'><button class='btn-valide'> valide payement
+                              </button></a>
+                            
+                        </div>`
+                            ;
+                    }
+                    else {
+                        movieEl.innerHTML = `
+                        <img src="uploads/${item.img}" alt="">
+                        <div class="movie-info">
+                                <h3>${item.nom}</h3>
+                                <h3>telephone => ${item.telephone}</h3>
+                            </div>
+                            <div class="overview">
+                              <h3> date reservation => ${item.date + " " + item.depart} </h3>
+                                direction => ${item.direction} <br>
+                                payer? => ${item.payer} 
+                                <button class='btn-valide' onclick='suprimer(${item.pay_id})''> suprimer payement
+                              </button>
+                            
+                        </div>`
+                    }
+
+                    recommendations.appendChild(movieEl);
+                });
+
+
+            },
+        });
+        function suprimer(id) {
+            if (confirm('tu veux suprimer')) {
+
+                location.href = 'php/suprimer_payer.php?id=' + id
+            }
+        }
+        function search() {
+
+            var telephone = $('#telephone').val();
+if(telephone!=''  ){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                data: "telephone=" + telephone,
+                url: "php/saerch.php",
+                async: false,
+                success: function (data) {
+                    if(data=='false'){
+                        alert('error')
+                    }
+                    recommendations.innerHTML = "";
+                    $.each(data, function (index, item) {
+
+                        const movieEl = document.createElement("div");
+                        movieEl.classList.add("movie");
+                        console.log(item.nom)
+                        movieEl.innerHTML = `
+
+                        <img src="uploads/${item.img}" alt="">
+                        <div class="movie-info">
+                                <h3>${item.nom}</h3>
+                            </div>
+                            <div class="overview">
+                                <h3>telephone => ${item.telephone}</h3>
+                                direction => ${item.direction} 
+                        </div>
+                        `;
+
+                        recommendations.appendChild(movieEl);
+                    });
+
+
+                },
+            });}
+            else alert('vide')
+        }
+    </script>
+</body>
+
+</html>
