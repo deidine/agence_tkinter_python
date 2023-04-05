@@ -1,0 +1,55 @@
+<html>
+            <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Document</title>
+                        <style>
+.box {display: flex;justify-content: center;align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+flex-wrap: wrap;background-color: rgba(0,0,0,0.4);backdrop-filter: blur(10px);}
+.ticket {width: 600px;height: 490px;padding-top: 10px;transform: scale(0.8);}
+.label {display: inline-block;justify-content: center;align-items: center;
+font-size: 16px;font-weight: bold;}
+.serial {height: 30px;display: flex;justify-content: center;align-items: center;border-bottom: 1px solid #000;
+font-size: 20px;font-weight: 300;}
+.rate {margin: auto;height: 30px;display: flex;justify-content: center;align-items: center;border-bottom: 1px solid #000;
+font-size: 16px;font-weight: bold;}
+.grid_wrapper {padding: 2px 5px;}
+.grid {display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+grid-template-rows: repeat(8, 40px);/*grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr*/;
+gap: 0px 0px;grid-template-areas:
+"name . . . message""name . . . message""name . . . message""name . . . message""name . . . message ""number . . . date";
+width: auto;height: auto;text-align: center;border: 1px solid rgba(0, 0, 0, 0.8);border-bottom: 0;}
+.name {grid-area: name;border-right: 1px solid black;
+border-bottom: 1px solid rgba(0, 0, 0, 0.8);writing-mode: vertical-rl;text-orientation: mixed;}
+.message {grid-area: message;display: inline-block; padding-top: 10px ;
+  padding-bottom: 10px;
+border-left: 1px solid rgba(0, 0, 0, 0.8);border-bottom: 1px solid rgba(0, 0, 0, 0.8);writing-mode: vertical-rl;text-orientation: mixed;}
+.number {border-left: 1px solid black;width: 200px;border-right: 1px solid black;border-bottom: 1px solid rgba(0, 0, 0, 0.8);display: inline-block;justify-content: center;
+align-items: center;font-size: 20px;}/* Colors */
+.date {float: left;
+  padding-top: 10px ;
+  padding-bottom: 10px;
+  width: auto; grid-area: date;
+border-left: 1px solid rgba(0, 0, 0, 0.8);
+writing-mode: horizontal-tb;text-orientation:mixed;}
+.yellow {background-color: #c2b27e;} 
+</style></head><body onload="window.print()">
+            <div class="box"><!-- ticket 1 -->
+            <div class="ticket yellow">
+            <div class="label">سفريات بوه ولد مصطفى<img width="200" height="60" src="images/2.jpg" >BOUHA EL MOUSTAPHA VOYAGES</div>
+            <div class="serial">رقم الباص2</div><div class="rate">الوجهةnoikchott  matin
+            </div><div class="grid_wrapper"><div class="grid">
+            <div class="name">لا نتحمل المسؤلية بعد 15 يوم <br> aucun responsabiliter apres 15 jours</div>
+            <div class="number">إسم المسافر</div>
+            <div class="number">q</div><br>
+            <div class="number">الهاتف</div>
+            <div class="number">1234</div><br>
+            <div class="number">رقم المقعد</div>
+            <div class="number">1</div><br>
+            <div class="number">السعر</div>
+            <div class="number">5000</div><br>
+            <div class="number">دفع</div>
+            <div class="number">✅</div><br>
+            <div class="message">🌝 رقم مبرمج التطبيق 49619609 </div></div></div>
+            <div class="date">DATE D'IMPRIMATION:	04-03-2023	:تاريخ الطباعة  </div>  </div>  
+                </body>

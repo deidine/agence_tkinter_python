@@ -1,0 +1,8 @@
+pip install pillow 9.2.0
+pip install pymysql
+pip install customtkinter 4.6.3
+pip install tkcalendar,guizero 1.4.0
+pip install tabulate,darkdeteted,tkhtmlview
+webbrowser
+imgkit
+pywebview required for it  proxy-tools, bottle, clr-loader, pythonnet
